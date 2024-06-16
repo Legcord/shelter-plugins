@@ -103,6 +103,9 @@
       streamConnection.videoStreamParameters[0].maxFrameRate = store2.fps;
       streamConnection.videoStreamParameters[0].maxResolution.height = store2.resolution;
       streamConnection.videoStreamParameters[0].maxResolution.width = Math.round(store2.resolution * (16 / 9));
+      streamConnection.videoQualityManager.goliveMaxQuality.bitrateMin = 5e5;
+      streamConnection.videoQualityManager.goliveMaxQuality.bitrateMax = 8e6;
+      streamConnection.videoQualityManager.goliveMaxQuality.bitrateTarget = 6e5;
       log(`Patched current user stream with resolution: ${store2.resolution} and fps: ${store2.fps}`);
     }
   }
@@ -122,7 +125,7 @@
           width: Math.round(store2.resolution * (16 / 9)),
           height: store2.resolution
         };
-        dispatch.maxFrameRate = 60;
+        dispatch.maxFrameRate = store2.fps;
       } else {
         return;
       }
