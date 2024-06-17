@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@uwu/lune':
-        specifier: ^1.2.1
+        specifier: ^1.4.1
         version: 1.4.1
       '@uwu/shelter-defs':
         specifier: ^1.1.0

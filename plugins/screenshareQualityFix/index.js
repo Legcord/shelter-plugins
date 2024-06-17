@@ -22,33 +22,9 @@ function onStreamQualityChange() {
 }
 export function onLoad() {
   dispatcher.subscribe("MEDIA_ENGINE_VIDEO_SOURCE_QUALITY_CHANGED", onStreamQualityChange)
-  
-  // NOTE - Not sure all of the patches below are necessary
-  unintercept = intercept((dispatch) => {
-    if (dispatch.type == "MEDIA_ENGINE_SET_GO_LIVE_SOURCE") {
-      if (dispatch.settings.qualityOptions)
-        dispatch.settings.qualityOptions = {
-          preset: 2,
-          resolution: store.resolution,
-          frameRate: store.fps,
-        };
-    } else if (dispatch.type == "MEDIA_ENGINE_VIDEO_SOURCE_QUALITY_CHANGED") {
-      dispatch.maxResolution = {
-        type: "fixed",
-        width: Math.round(store.resolution * (16 / 9)),
-        height: store.resolution,
-      };
-      dispatch.maxFrameRate = store.fps;
-    } else {
-      return;
-    }
-  });
-	
-	
 }
 
 export function onUnload() {
   dispatcher.unsubscribe("MEDIA_ENGINE_VIDEO_SOURCE_QUALITY_CHANGED", onStreamQualityChange)
-  unintercept()
 }
 export { default as settings } from "./settings";
