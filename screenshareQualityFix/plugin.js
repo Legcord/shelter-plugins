@@ -94,7 +94,6 @@
   } = shelter;
   store2.fps ??= 30;
   store2.resolution ??= 720;
-  var unintercept;
   function onStreamQualityChange() {
     const mediaConnections = [...MediaEngineStore.getMediaEngine().connections];
     const currentUserId = UserStore.getCurrentUser().id;
@@ -111,29 +110,9 @@
   }
   function onLoad() {
     dispatcher.subscribe("MEDIA_ENGINE_VIDEO_SOURCE_QUALITY_CHANGED", onStreamQualityChange);
-    unintercept = intercept((dispatch) => {
-      if (dispatch.type == "MEDIA_ENGINE_SET_GO_LIVE_SOURCE") {
-        if (dispatch.settings.qualityOptions)
-          dispatch.settings.qualityOptions = {
-            preset: 2,
-            resolution: store2.resolution,
-            frameRate: store2.fps
-          };
-      } else if (dispatch.type == "MEDIA_ENGINE_VIDEO_SOURCE_QUALITY_CHANGED") {
-        dispatch.maxResolution = {
-          type: "fixed",
-          width: Math.round(store2.resolution * (16 / 9)),
-          height: store2.resolution
-        };
-        dispatch.maxFrameRate = store2.fps;
-      } else {
-        return;
-      }
-    });
   }
   function onUnload() {
     dispatcher.unsubscribe("MEDIA_ENGINE_VIDEO_SOURCE_QUALITY_CHANGED", onStreamQualityChange);
-    unintercept();
   }
   return __toCommonJS(screenshareQualityFix_exports);
 })();
