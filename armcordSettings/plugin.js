@@ -78,9 +78,22 @@
 
   // plugins/armcordSettings/pages/SettingsPage.jsx
   var import_web2 = __toESM(require_web(), 1);
+
+  // plugins/armcordSettings/settings.js
+  var { plugin: { store } } = shelter;
+  function refreshSettings() {
+    store.settings = window.armcord.settings.config;
+    console.log(store.settings);
+  }
+  function set(key, value) {
+    armcord.settings.setConfig(key, value);
+    refreshSettings();
+  }
+
+  // plugins/armcordSettings/pages/SettingsPage.jsx
   var {
     plugin: {
-      store
+      store: store2
     },
     ui: {
       SwitchItem,
@@ -89,9 +102,7 @@
       HeaderTags: HeaderTags2
     }
   } = shelter;
-  async function SettingsPage() {
-    const settings = armcord.settings.config;
-    console.error(settings);
+  function SettingsPage() {
     return [(0, import_web2.createComponent)(Header2, {
       get tag() {
         return HeaderTags2.H1;
@@ -108,13 +119,14 @@
     }), (0, import_web2.createComponent)(SwitchItem, {
       note: "placeholder",
       get value() {
-        return settings.armcordCSP;
+        return store2.settings.armcordCSP;
       },
+      onChange: (e) => set("armcordCSP", e),
       children: "ArmCord CSP"
     }), (0, import_web2.createComponent)(SwitchItem, {
       note: "placeholder",
       get value() {
-        return settings.autoScroll;
+        return store2.settings.autoScroll;
       },
       children: "Vencord"
     })];
@@ -124,7 +136,7 @@
   var import_web3 = __toESM(require_web(), 1);
   var {
     plugin: {
-      store: store2
+      store: store3
     },
     ui: {
       TextBox,
@@ -145,7 +157,7 @@
   var import_web4 = __toESM(require_web(), 1);
   var {
     plugin: {
-      store: store3
+      store: store4
     },
     ui: {
       TextBox: TextBox2,
@@ -164,6 +176,7 @@
 
   // plugins/armcordSettings/index.js
   var {
+    plugin: { store: store5 },
     settings: { registerSection },
     util: { log }
   } = shelter;
@@ -176,6 +189,7 @@
     registerSection("section", "armcord-updater", "Updater", UpdaterPage)
   ];
   function onLoad() {
+    refreshSettings();
     log("ArmCord Settings");
     settingsPages;
   }
