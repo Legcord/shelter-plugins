@@ -2,7 +2,9 @@ import { LegacyPage } from "./pages/LegacyPage";
 import { SettingsPage } from "./pages/SettingsPage";
 import { ThemesPage } from "./pages/ThemesPage";
 import { UpdaterPage } from "./pages/UpdaterPage";
+import { refreshSettings } from "./settings";
 const {
+  plugin: {store},
   settings: {registerSection},
   util: { log },
 } = shelter;
@@ -17,6 +19,7 @@ let settingsPages = [
 ]
 
 export function onLoad() {
+  refreshSettings()
   log("ArmCord Settings")
   settingsPages
 }
