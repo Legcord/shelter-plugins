@@ -20,6 +20,7 @@ let settingsPages = [
 
 export function onLoad() {
   refreshSettings()
+  store.i18n = window.armcord.translations
   log("ArmCord Settings")
   settingsPages
 }
