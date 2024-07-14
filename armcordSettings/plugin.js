@@ -86,8 +86,9 @@
     console.log(store.settings);
   }
   function set(key, value) {
+    store.settings[key] = value;
+    console.log(store.settings[key]);
     armcord.settings.setConfig(key, value);
-    refreshSettings();
   }
 
   // plugins/armcordSettings/pages/SettingsPage.jsx
@@ -110,25 +111,152 @@
       children: "Settings"
     }), (0, import_web2.createComponent)(Divider2, {
       mt: true,
-      mb: "30px"
+      mb: true
     }), (0, import_web2.createComponent)(Header2, {
       get tag() {
         return HeaderTags2.H5;
       },
       children: "Mods"
     }), (0, import_web2.createComponent)(SwitchItem, {
-      note: "placeholder",
+      get note() {
+        return store2.i18n["settings-csp-desc"];
+      },
       get value() {
         return store2.settings.armcordCSP;
       },
       onChange: (e) => set("armcordCSP", e),
       children: "ArmCord CSP"
     }), (0, import_web2.createComponent)(SwitchItem, {
-      note: "placeholder",
+      get note() {
+        return store2.i18n["settings-mod-vencord"];
+      },
       get value() {
         return store2.settings.autoScroll;
       },
       children: "Vencord"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-invitewebsocket-desc"];
+      },
+      get value() {
+        return store2.settings.inviteWebsocket;
+      },
+      onChange: (e) => set("inviteWebsocket", e),
+      children: "Rich Presence"
+    }), (0, import_web2.createComponent)(Header2, {
+      get tag() {
+        return HeaderTags2.H5;
+      },
+      children: "Look and feel"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-skipSplash-desc"];
+      },
+      get value() {
+        return store2.settings.skipSplash;
+      },
+      onChange: (e) => set("skipSplash", e),
+      children: "Skip splash screen"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-dynamicIcon-desc"];
+      },
+      get value() {
+        return store2.settings.dynamicIcon;
+      },
+      onChange: (e) => set("dynamicIcon", e),
+      children: "Dynamic icon"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-mobileMode-desc"];
+      },
+      get value() {
+        return store2.settings.mobileMode;
+      },
+      onChange: (e) => set("mobileMode", e),
+      children: "Mobile Mode"
+    }), (0, import_web2.createComponent)(Header2, {
+      get tag() {
+        return HeaderTags2.H5;
+      },
+      children: "Behaviour"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-MultiInstance-desc"];
+      },
+      get value() {
+        return store2.settings.multiInstance;
+      },
+      onChange: (e) => set("multiInstance", e),
+      children: "Multi Instance"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-mintoTray-desc"];
+      },
+      get value() {
+        return store2.settings.minimizeToTray;
+      },
+      onChange: (e) => set("minimizeToTray", e),
+      children: "Work in background"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-tray-desc"];
+      },
+      get value() {
+        return store2.settings.tray;
+      },
+      onChange: (e) => set("tray", e),
+      children: "Tray"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-startMinimized-desc"];
+      },
+      get value() {
+        return store2.settings.startMinimized;
+      },
+      onChange: (e) => set("startMinimized", e),
+      children: "Start minimized"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-smoothScroll-desc"];
+      },
+      get value() {
+        return store2.settings.smoothScroll;
+      },
+      onChange: (e) => set("smoothScroll", e),
+      children: "Smooth scrolling"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-autoScroll-desc"];
+      },
+      get value() {
+        return store2.settings.autoScroll;
+      },
+      onChange: (e) => set("autoScroll", e),
+      children: "Allow auto-scroll"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-spellcheck-desc"];
+      },
+      get value() {
+        return store2.settings.spellcheck;
+      },
+      onChange: (e) => set("spellcheck", e),
+      children: "Spellcheck"
+    }), (0, import_web2.createComponent)(Header2, {
+      get tag() {
+        return HeaderTags2.H5;
+      },
+      children: "Legacy features"
+    }), (0, import_web2.createComponent)(SwitchItem, {
+      get note() {
+        return store2.i18n["settings-useLegacyCapturer-desc"];
+      },
+      get value() {
+        return store2.settings.useLegacyCapturer;
+      },
+      onChange: (e) => set("useLegacyCapturer", e),
+      children: "Use legacy capturer"
     })];
   }
 
@@ -190,6 +318,7 @@
   ];
   function onLoad() {
     refreshSettings();
+    store5.i18n = window.armcord.translations;
     log("ArmCord Settings");
     settingsPages;
   }
