@@ -5,6 +5,6 @@ export function refreshSettings() {
 }
 export function set(key, value) {
     store.settings[key] = value;
-    console.log(store.settings[key])
+    console.log(key + ": " + store.settings[key])
     armcord.settings.setConfig(key, value)
 }

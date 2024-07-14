@@ -7,6 +7,8 @@ const {
   plugin: {store},
   settings: {registerSection},
   util: { log },
+  ui: {openConfirmationModal},
+  flux: {dispatcher}
 } = shelter;
 
 let settingsPages = [
@@ -18,12 +20,31 @@ let settingsPages = [
   registerSection('section', "armcord-updater", "Updater", UpdaterPage),
 ]
 
+function restartRequired(payload) {
+  if (payload.event === "settings_pane_viewed" && typeof payload.properties.origin_pane != "undefined") {
+    if (payload.properties.origin_pane == "armcord-settings") {
+      openConfirmationModal({
+        header: () => "Restart required",
+        body: () => "You need to restart to apply these changes.",
+        type: "danger",
+        confirmText: "Restart",
+        cancelText: "I'll do it later"
+      }).then(
+        () => armcord.restart(),
+        () => console.log("restart skipped")
+      );
+    }
+  }
+}
+
 export function onLoad() {
   refreshSettings()
   store.i18n = window.armcord.translations
   log("ArmCord Settings")
   settingsPages
+  dispatcher.subscribe("TRACK", restartRequired)
 }
 export function onUnload() {
   settingsPages.forEach((e) => e())
+  dispatcher.unsubscribe("TRACK", restartRequired)
 }

@@ -1,11 +1,10 @@
 const {
   util: { log },
-	flux: { stores: {UserStore, MediaEngineStore}, dispatcher, intercept },
+	flux: { stores: {UserStore, MediaEngineStore}, dispatcher },
   plugin: { store }
 } = shelter;
 store.fps ??= 30; // set default
 store.resolution ??= 720; // set default
-let unintercept;
 function onStreamQualityChange() {
   const mediaConnections = [...MediaEngineStore.getMediaEngine().connections];
   const currentUserId = UserStore.getCurrentUser().id;
