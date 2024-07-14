@@ -89,7 +89,7 @@
   // plugins/screenshareQualityFix/index.js
   var {
     util: { log },
-    flux: { stores: { UserStore, MediaEngineStore }, dispatcher, intercept },
+    flux: { stores: { UserStore, MediaEngineStore }, dispatcher },
     plugin: { store: store2 }
   } = shelter;
   store2.fps ??= 30;
