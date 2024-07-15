@@ -253,6 +253,13 @@
     console.log(store2.settings);
   }
   function set(key, value) {
+    if (key == "vencord" && value == true) {
+      store2.vencord = true;
+      armcord.settings.setConfig("mods", "vencord");
+    } else {
+      store2.vencord = false;
+      armcord.settings.setConfig("mods", "none");
+    }
     store2.settings[key] = value;
     console.log(key + ": " + store2.settings[key]);
     armcord.settings.setConfig(key, value);
@@ -319,8 +326,9 @@
         return store3.i18n["settings-mod-vencord"];
       },
       get value() {
-        return store3.settings.autoScroll;
+        return store3.vencord;
       },
+      onChange: (e) => set("vencord", e),
       children: "Vencord"
     }), (0, import_web15.createComponent)(SwitchItem, {
       get note() {
@@ -617,6 +625,11 @@
   function onLoad() {
     refreshSettings();
     store6.i18n = window.armcord.translations;
+    if (window.armcord.settings.config.mods = "vencord") {
+      store6.vencord = true;
+    } else {
+      store6.vencord = false;
+    }
     log("ArmCord Settings");
     settingsPages;
     dispatcher.subscribe("TRACK", restartRequired);
