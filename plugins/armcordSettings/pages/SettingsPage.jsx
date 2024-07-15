@@ -21,7 +21,7 @@ export function SettingsPage() {
             >
                 ArmCord CSP
             </SwitchItem>
-            <SwitchItem note={store.i18n["settings-mod-vencord"]} value={store.settings.autoScroll}>
+            <SwitchItem note={store.i18n["settings-mod-vencord"]} value={store.vencord} onChange={(e) => set("vencord", e)}>
                 Vencord
             </SwitchItem>
             <SwitchItem

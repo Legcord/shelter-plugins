@@ -40,6 +40,12 @@ function restartRequired(payload) {
 export function onLoad() {
   refreshSettings()
   store.i18n = window.armcord.translations
+  // make this better
+  if (window.armcord.settings.config.mods = "vencord") {
+    store.vencord = true;
+  } else {
+    store.vencord = false;
+  }
   log("ArmCord Settings")
   settingsPages
   dispatcher.subscribe("TRACK", restartRequired)
