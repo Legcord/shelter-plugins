@@ -625,7 +625,7 @@
   function onLoad() {
     refreshSettings();
     store6.i18n = window.armcord.translations;
-    if (window.armcord.settings.config.mods = "vencord") {
+    if (window.armcord.settings.config.mods == "vencord") {
       store6.vencord = true;
     } else {
       store6.vencord = false;
