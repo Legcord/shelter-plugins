@@ -20,7 +20,6 @@
   // plugins/armcordRPC/index.js
   var armcordRPC_exports = {};
   __export(armcordRPC_exports, {
-    fetchAssetId: () => fetchAssetId,
     onLoad: () => onLoad
   });
   var {
@@ -52,18 +51,20 @@
   };
   function onLoad() {
     ArmCordRPC.listen(async (msg) => {
-      console.log(msg);
-      log("ArmCord RPC: detected some game");
-      if (msg.activity?.assets?.large_image)
-        msg.activity.assets.large_image = await fetchAssetId(
-          msg.activity.application_id,
-          msg.activity.assets.large_image
-        );
-      if (msg.activity?.assets?.small_image)
-        msg.activity.assets.small_image = await fetchAssetId(
-          msg.activity.application_id,
-          msg.activity.assets.small_image
-        );
+      if (msg.activity?.assets?.large_image.startsWith("https://")) {
+        msg.activity.assets.large_image = "https://images-ext-1.discordapp.net/external/" + msg.activity.assets.large_image.replace("https://", "https/") + "?format=webp&width=300&height=300";
+      } else {
+        if (msg.activity?.assets?.large_image)
+          msg.activity.assets.large_image = await fetchAssetId(
+            msg.activity.application_id,
+            msg.activity.assets.large_image
+          );
+        if (msg.activity?.assets?.small_image)
+          msg.activity.assets.small_image = await fetchAssetId(
+            msg.activity.application_id,
+            msg.activity.assets.small_image
+          );
+      }
       if (msg.activity) {
         const appId = msg.activity.application_id;
         if (!apps[appId])
@@ -72,6 +73,7 @@
         if (!msg.activity.name)
           msg.activity.name = app.name;
       }
+      console.warn(msg);
       FluxDispatcher.dispatch({ type: "LOCAL_ACTIVITY_UPDATE", ...msg });
     });
   }
