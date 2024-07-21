@@ -248,21 +248,24 @@
 
   // plugins/armcordSettings/settings.js
   var { plugin: { store: store2 } } = shelter;
+  var isRestartRequired = false;
   function refreshSettings() {
     store2.settings = window.armcord.settings.config;
     console.log(store2.settings);
   }
   function set(key, value) {
+    isRestartRequired = true;
     if (key == "vencord" && value == true) {
       store2.vencord = true;
       armcord.settings.setConfig("mods", "vencord");
-    } else {
+    } else if (key == "vencord" && value == false) {
       store2.vencord = false;
       armcord.settings.setConfig("mods", "none");
+    } else {
+      store2.settings[key] = value;
+      console.log(key + ": " + store2.settings[key]);
+      armcord.settings.setConfig(key, value);
     }
-    store2.settings[key] = value;
-    console.log(key + ": " + store2.settings[key]);
-    armcord.settings.setConfig(key, value);
   }
 
   // plugins/armcordSettings/pages/SettingsPage.jsx
@@ -609,16 +612,18 @@
   function restartRequired(payload) {
     if (payload.event === "settings_pane_viewed" && typeof payload.properties.origin_pane != "undefined") {
       if (payload.properties.origin_pane == "armcord-settings") {
-        openConfirmationModal({
-          header: () => "Restart required",
-          body: () => "You need to restart to apply these changes.",
-          type: "danger",
-          confirmText: "Restart",
-          cancelText: "I'll do it later"
-        }).then(
-          () => armcord.restart(),
-          () => console.log("restart skipped")
-        );
+        if (isRestartRequired) {
+          openConfirmationModal({
+            header: () => "Restart required",
+            body: () => "You need to restart to apply these changes.",
+            type: "danger",
+            confirmText: "Restart",
+            cancelText: "I'll do it later"
+          }).then(
+            () => armcord.restart(),
+            () => console.log("restart skipped")
+          );
+        }
       }
     }
   }
