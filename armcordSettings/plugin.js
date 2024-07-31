@@ -44,57 +44,25 @@
     onUnload: () => onUnload
   });
 
-  // plugins/armcordSettings/pages/LegacyPage.jsx
-  var import_web = __toESM(require_web(), 1);
-  var {
-    ui: {
-      Header,
-      HeaderTags,
-      Button,
-      Divider
-    }
-  } = shelter;
-  function LegacyPage() {
-    return [(0, import_web.createComponent)(Header, {
-      get tag() {
-        return HeaderTags.H1;
-      },
-      children: "Legacy ArmCord components"
-    }), (0, import_web.createComponent)(Button, {
-      get onClick() {
-        return window.armcord.openSettingsWindow;
-      },
-      children: "Settings"
-    }), (0, import_web.createComponent)(Divider, {
-      mt: true,
-      mb: "30px"
-    }), (0, import_web.createComponent)(Button, {
-      get onClick() {
-        return window.armcord.openThemesWindow;
-      },
-      children: "Themes"
-    })];
-  }
-
   // plugins/armcordSettings/pages/SettingsPage.jsx
+  var import_web12 = __toESM(require_web(), 1);
   var import_web13 = __toESM(require_web(), 1);
   var import_web14 = __toESM(require_web(), 1);
-  var import_web15 = __toESM(require_web(), 1);
 
   // plugins/armcordSettings/components/DropdownItem.jsx
+  var import_web6 = __toESM(require_web(), 1);
   var import_web7 = __toESM(require_web(), 1);
   var import_web8 = __toESM(require_web(), 1);
   var import_web9 = __toESM(require_web(), 1);
   var import_web10 = __toESM(require_web(), 1);
   var import_web11 = __toESM(require_web(), 1);
-  var import_web12 = __toESM(require_web(), 1);
 
   // plugins/armcordSettings/components/Dropdown.jsx
+  var import_web = __toESM(require_web(), 1);
   var import_web2 = __toESM(require_web(), 1);
   var import_web3 = __toESM(require_web(), 1);
   var import_web4 = __toESM(require_web(), 1);
   var import_web5 = __toESM(require_web(), 1);
-  var import_web6 = __toESM(require_web(), 1);
 
   // plugins/armcordSettings/components/Dropdown.css
   shelter.plugin.scoped.ui.injectCss(`._acDropdown_g5h5a_1 option {
@@ -130,14 +98,14 @@
   };
 
   // plugins/armcordSettings/components/Dropdown.jsx
-  var _tmpl$ = /* @__PURE__ */ (0, import_web2.template)(`<select></select>`, 2);
+  var _tmpl$ = /* @__PURE__ */ (0, import_web.template)(`<select></select>`, 2);
   var Dropdown = (props) => {
     return (() => {
       const _el$ = _tmpl$.cloneNode(true);
-      (0, import_web5.addEventListener)(_el$, "change", props.onChange);
-      (0, import_web4.insert)(_el$, () => props.children);
-      (0, import_web6.effect)(() => (0, import_web3.className)(_el$, Dropdown_default.acDropdown));
-      (0, import_web6.effect)(() => _el$.value = props.value);
+      (0, import_web4.addEventListener)(_el$, "change", props.onChange);
+      (0, import_web3.insert)(_el$, () => props.children);
+      (0, import_web5.effect)(() => (0, import_web2.className)(_el$, Dropdown_default.acDropdown));
+      (0, import_web5.effect)(() => _el$.value = props.value);
       return _el$;
     })();
   };
@@ -172,40 +140,40 @@
   };
 
   // plugins/armcordSettings/components/DropdownItem.jsx
-  var _tmpl$2 = /* @__PURE__ */ (0, import_web7.template)(`<div><div></div></div>`, 4);
+  var _tmpl$2 = /* @__PURE__ */ (0, import_web6.template)(`<div><div></div></div>`, 4);
   var {
     plugin: {
       store
     },
     ui: {
-      Divider: Divider2,
-      Header: Header2,
+      Divider,
+      Header,
       LinkButton,
-      HeaderTags: HeaderTags2
+      HeaderTags
     }
   } = shelter;
   var DropdownItem = (props) => {
     return (() => {
       const _el$ = _tmpl$2.cloneNode(true), _el$2 = _el$.firstChild;
-      (0, import_web11.insert)(_el$, (0, import_web12.createComponent)(Header2, {
+      (0, import_web10.insert)(_el$, (0, import_web11.createComponent)(Header, {
         get ["class"]() {
           return DropdownItem_default.title;
         },
         get tag() {
-          return HeaderTags2.H3;
+          return HeaderTags.H3;
         },
         get children() {
           return props.title;
         }
       }), _el$2);
-      (0, import_web11.insert)(_el$2, () => props.note);
-      (0, import_web11.insert)(_el$, (0, import_web12.createComponent)(import_web10.Show, {
+      (0, import_web10.insert)(_el$2, () => props.note);
+      (0, import_web10.insert)(_el$, (0, import_web11.createComponent)(import_web9.Show, {
         get when() {
           return props.link;
         },
         keyed: true,
         get children() {
-          return (0, import_web12.createComponent)(LinkButton, {
+          return (0, import_web11.createComponent)(LinkButton, {
             get href() {
               return props.link;
             },
@@ -213,7 +181,7 @@
           });
         }
       }), null);
-      (0, import_web11.insert)(_el$, (0, import_web12.createComponent)(Dropdown, {
+      (0, import_web10.insert)(_el$, (0, import_web11.createComponent)(Dropdown, {
         get value() {
           return props.value;
         },
@@ -224,11 +192,11 @@
           return props.children;
         }
       }), null);
-      (0, import_web11.insert)(_el$, (0, import_web12.createComponent)(Divider2, {}), null);
-      (0, import_web9.effect)((_p$) => {
+      (0, import_web10.insert)(_el$, (0, import_web11.createComponent)(Divider, {}), null);
+      (0, import_web8.effect)((_p$) => {
         const _v$ = DropdownItem_default.item, _v$2 = DropdownItem_default.note;
-        _v$ !== _p$._v$ && (0, import_web8.className)(_el$, _p$._v$ = _v$);
-        _v$2 !== _p$._v$2 && (0, import_web8.className)(_el$2, _p$._v$2 = _v$2);
+        _v$ !== _p$._v$ && (0, import_web7.className)(_el$, _p$._v$ = _v$);
+        _v$2 !== _p$._v$2 && (0, import_web7.className)(_el$2, _p$._v$2 = _v$2);
         return _p$;
       }, {
         _v$: void 0,
@@ -269,53 +237,56 @@
   }
 
   // plugins/armcordSettings/pages/SettingsPage.jsx
-  var _tmpl$3 = /* @__PURE__ */ (0, import_web13.template)(`<option value="default">Default (Custom)</option>`, 2);
-  var _tmpl$22 = /* @__PURE__ */ (0, import_web13.template)(`<option value="native">Native</option>`, 2);
-  var _tmpl$32 = /* @__PURE__ */ (0, import_web13.template)(`<option value="transparent">Transparent</option>`, 2);
-  var _tmpl$4 = /* @__PURE__ */ (0, import_web13.template)(`<option value="default"></option>`, 2);
-  var _tmpl$5 = /* @__PURE__ */ (0, import_web13.template)(`<option value="dsc-tray"></option>`, 2);
-  var _tmpl$6 = /* @__PURE__ */ (0, import_web13.template)(`<option value="clsc-dsc-tray"></option>`, 2);
-  var _tmpl$7 = /* @__PURE__ */ (0, import_web13.template)(`<option value="ac_plug_colored"></option>`, 2);
-  var _tmpl$8 = /* @__PURE__ */ (0, import_web13.template)(`<option value="ac_white_plug"></option>`, 2);
-  var _tmpl$9 = /* @__PURE__ */ (0, import_web13.template)(`<option value="ac_white_plug_hollow"></option>`, 2);
-  var _tmpl$10 = /* @__PURE__ */ (0, import_web13.template)(`<option value="ac_black_plug"></option>`, 2);
-  var _tmpl$11 = /* @__PURE__ */ (0, import_web13.template)(`<option value="ac_black_plug_hollow"></option>`, 2);
-  var _tmpl$12 = /* @__PURE__ */ (0, import_web13.template)(`<option value="stable">Stable</option>`, 2);
-  var _tmpl$13 = /* @__PURE__ */ (0, import_web13.template)(`<option value="canary">Canary</option>`, 2);
-  var _tmpl$14 = /* @__PURE__ */ (0, import_web13.template)(`<option value="ptb">PTB</option>`, 2);
-  var _tmpl$15 = /* @__PURE__ */ (0, import_web13.template)(`<option value="performance">Performance</option>`, 2);
-  var _tmpl$16 = /* @__PURE__ */ (0, import_web13.template)(`<option value="battery">Battery</option>`, 2);
-  var _tmpl$17 = /* @__PURE__ */ (0, import_web13.template)(`<option value="vaapi">VAAPI</option>`, 2);
-  var _tmpl$18 = /* @__PURE__ */ (0, import_web13.template)(`<option value="none">None</option>`, 2);
+  var _tmpl$3 = /* @__PURE__ */ (0, import_web12.template)(`<option value="default">Default (Custom)</option>`, 2);
+  var _tmpl$22 = /* @__PURE__ */ (0, import_web12.template)(`<option value="native">Native</option>`, 2);
+  var _tmpl$32 = /* @__PURE__ */ (0, import_web12.template)(`<option value="transparent">Transparent</option>`, 2);
+  var _tmpl$4 = /* @__PURE__ */ (0, import_web12.template)(`<option value="default"></option>`, 2);
+  var _tmpl$5 = /* @__PURE__ */ (0, import_web12.template)(`<option value="dsc-tray"></option>`, 2);
+  var _tmpl$6 = /* @__PURE__ */ (0, import_web12.template)(`<option value="clsc-dsc-tray"></option>`, 2);
+  var _tmpl$7 = /* @__PURE__ */ (0, import_web12.template)(`<option value="ac_plug_colored"></option>`, 2);
+  var _tmpl$8 = /* @__PURE__ */ (0, import_web12.template)(`<option value="ac_white_plug"></option>`, 2);
+  var _tmpl$9 = /* @__PURE__ */ (0, import_web12.template)(`<option value="ac_white_plug_hollow"></option>`, 2);
+  var _tmpl$10 = /* @__PURE__ */ (0, import_web12.template)(`<option value="ac_black_plug"></option>`, 2);
+  var _tmpl$11 = /* @__PURE__ */ (0, import_web12.template)(`<option value="ac_black_plug_hollow"></option>`, 2);
+  var _tmpl$12 = /* @__PURE__ */ (0, import_web12.template)(`<option value="stable">Stable</option>`, 2);
+  var _tmpl$13 = /* @__PURE__ */ (0, import_web12.template)(`<option value="canary">Canary</option>`, 2);
+  var _tmpl$14 = /* @__PURE__ */ (0, import_web12.template)(`<option value="ptb">PTB</option>`, 2);
+  var _tmpl$15 = /* @__PURE__ */ (0, import_web12.template)(`<option value="performance"></option>`, 2);
+  var _tmpl$16 = /* @__PURE__ */ (0, import_web12.template)(`<option value="battery"></option>`, 2);
+  var _tmpl$17 = /* @__PURE__ */ (0, import_web12.template)(`<option value="vaapi"></option>`, 2);
+  var _tmpl$18 = /* @__PURE__ */ (0, import_web12.template)(`<option value="none"></option>`, 2);
+  var _tmpl$19 = /* @__PURE__ */ (0, import_web12.template)(`<br>`, 1);
   var {
     plugin: {
       store: store3
     },
     ui: {
       SwitchItem,
-      Header: Header3,
-      Divider: Divider3,
-      HeaderTags: HeaderTags3
+      Header: Header2,
+      Divider: Divider2,
+      HeaderTags: HeaderTags2,
+      Button,
+      ButtonSizes
     }
   } = shelter;
   function SettingsPage() {
-    return [(0, import_web15.createComponent)(Header3, {
+    return [(0, import_web14.createComponent)(Header2, {
       get tag() {
-        return HeaderTags3.H1;
+        return HeaderTags2.H1;
       },
       children: "Settings"
-    }), (0, import_web15.createComponent)(Divider3, {
+    }), (0, import_web14.createComponent)(Divider2, {
       mt: true,
       mb: true
-    }), (0, import_web15.createComponent)(Header3, {
+    }), (0, import_web14.createComponent)(Header2, {
       get ["class"]() {
         return SettingsPage_default.category;
       },
       get tag() {
-        return HeaderTags3.H5;
+        return HeaderTags2.H5;
       },
       children: "Mods"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-csp-desc"];
       },
@@ -324,7 +295,7 @@
       },
       onChange: (e) => set("armcordCSP", e),
       children: "ArmCord CSP"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-mod-vencord"];
       },
@@ -333,7 +304,7 @@
       },
       onChange: (e) => set("vencord", e),
       children: "Vencord"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-invitewebsocket-desc"];
       },
@@ -341,73 +312,79 @@
         return store3.settings.inviteWebsocket;
       },
       onChange: (e) => set("inviteWebsocket", e),
-      children: "Rich Presence"
-    }), (0, import_web15.createComponent)(Header3, {
+      get children() {
+        return store3.i18n["settings-invitewebsocket"];
+      }
+    }), (0, import_web14.createComponent)(Header2, {
       get ["class"]() {
         return SettingsPage_default.category;
       },
       get tag() {
-        return HeaderTags3.H5;
+        return HeaderTags2.H5;
       },
       children: "Look and feel"
-    }), (0, import_web15.createComponent)(DropdownItem, {
+    }), (0, import_web14.createComponent)(DropdownItem, {
       get value() {
         return store3.settings.windowStyle;
       },
       onChange: (e) => set("windowStyle", e.target.value),
-      title: "Window style",
+      get title() {
+        return store3.i18n["settings-theme"];
+      },
       get note() {
-        return store3.i18n["settings-invitewebsocket-desc"];
+        return store3.i18n["settings-theme-desc"];
       },
       link: "https://github.com/ArmCord/ArmCord/wiki/Settings-%5Bwip%5D#armcord-theme",
       get children() {
         return [_tmpl$3.cloneNode(true), _tmpl$22.cloneNode(true), _tmpl$32.cloneNode(true)];
       }
-    }), (0, import_web15.createComponent)(DropdownItem, {
+    }), (0, import_web14.createComponent)(DropdownItem, {
       get value() {
         return store3.settings.trayIcon;
       },
       onChange: (e) => set("trayIcon", e.target.value),
-      title: "Tray icon",
+      get title() {
+        return store3.i18n["settings-trayIcon"];
+      },
       get note() {
         return store3.i18n["settings-trayIcon-desc"];
       },
       get children() {
         return [(() => {
           const _el$4 = _tmpl$4.cloneNode(true);
-          (0, import_web14.insert)(_el$4, () => store3.i18n["settings-trayIcon-dynamic"]);
+          (0, import_web13.insert)(_el$4, () => store3.i18n["settings-trayIcon-dynamic"]);
           return _el$4;
         })(), (() => {
           const _el$5 = _tmpl$5.cloneNode(true);
-          (0, import_web14.insert)(_el$5, () => store3.i18n["settings-trayIcon-normal"]);
+          (0, import_web13.insert)(_el$5, () => store3.i18n["settings-trayIcon-normal"]);
           return _el$5;
         })(), (() => {
           const _el$6 = _tmpl$6.cloneNode(true);
-          (0, import_web14.insert)(_el$6, () => store3.i18n["settings-trayIcon-classic"]);
+          (0, import_web13.insert)(_el$6, () => store3.i18n["settings-trayIcon-classic"]);
           return _el$6;
         })(), (() => {
           const _el$7 = _tmpl$7.cloneNode(true);
-          (0, import_web14.insert)(_el$7, () => store3.i18n["settings-trayIcon-colored-plug"]);
+          (0, import_web13.insert)(_el$7, () => store3.i18n["settings-trayIcon-colored-plug"]);
           return _el$7;
         })(), (() => {
           const _el$8 = _tmpl$8.cloneNode(true);
-          (0, import_web14.insert)(_el$8, () => store3.i18n["settings-trayIcon-white-plug"]);
+          (0, import_web13.insert)(_el$8, () => store3.i18n["settings-trayIcon-white-plug"]);
           return _el$8;
         })(), (() => {
           const _el$9 = _tmpl$9.cloneNode(true);
-          (0, import_web14.insert)(_el$9, () => store3.i18n["settings-trayIcon-white-plug-alt"]);
+          (0, import_web13.insert)(_el$9, () => store3.i18n["settings-trayIcon-white-plug-alt"]);
           return _el$9;
         })(), (() => {
           const _el$10 = _tmpl$10.cloneNode(true);
-          (0, import_web14.insert)(_el$10, () => store3.i18n["settings-trayIcon-black-plug"]);
+          (0, import_web13.insert)(_el$10, () => store3.i18n["settings-trayIcon-black-plug"]);
           return _el$10;
         })(), (() => {
           const _el$11 = _tmpl$11.cloneNode(true);
-          (0, import_web14.insert)(_el$11, () => store3.i18n["settings-trayIcon-black-plug-alt"]);
+          (0, import_web13.insert)(_el$11, () => store3.i18n["settings-trayIcon-black-plug-alt"]);
           return _el$11;
         })()];
       }
-    }), (0, import_web15.createComponent)(SwitchItem, {
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-skipSplash-desc"];
       },
@@ -415,17 +392,10 @@
         return store3.settings.skipSplash;
       },
       onChange: (e) => set("skipSplash", e),
-      children: "Skip splash screen"
-    }), (0, import_web15.createComponent)(SwitchItem, {
-      get note() {
-        return store3.i18n["settings-dynamicIcon-desc"];
-      },
-      get value() {
-        return store3.settings.dynamicIcon;
-      },
-      onChange: (e) => set("dynamicIcon", e),
-      children: "Dynamic icon"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-skipSplash"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-mobileMode-desc"];
       },
@@ -433,21 +403,25 @@
         return store3.settings.mobileMode;
       },
       onChange: (e) => set("mobileMode", e),
-      children: "Mobile Mode"
-    }), (0, import_web15.createComponent)(Header3, {
+      get children() {
+        return store3.i18n["settings-mobileMode"];
+      }
+    }), (0, import_web14.createComponent)(Header2, {
       get ["class"]() {
         return SettingsPage_default.category;
       },
       get tag() {
-        return HeaderTags3.H5;
+        return HeaderTags2.H5;
       },
       children: "Behaviour"
-    }), (0, import_web15.createComponent)(DropdownItem, {
+    }), (0, import_web14.createComponent)(DropdownItem, {
       get value() {
         return store3.settings.channel;
       },
       onChange: (e) => set("channel", e.target.value),
-      title: "Discord channel",
+      get title() {
+        return store3.i18n["settings-channel"];
+      },
       get note() {
         return store3.i18n["settings-channel-desc"];
       },
@@ -455,20 +429,38 @@
       get children() {
         return [_tmpl$12.cloneNode(true), _tmpl$13.cloneNode(true), _tmpl$14.cloneNode(true)];
       }
-    }), (0, import_web15.createComponent)(DropdownItem, {
+    }), (0, import_web14.createComponent)(DropdownItem, {
       get value() {
         return store3.settings.performanceMode;
       },
       onChange: (e) => set("performanceMode", e.target.value),
-      title: "Performance mode",
+      get title() {
+        return store3.i18n["settings-prfmMode"];
+      },
       get note() {
         return store3.i18n["settings-prfmMode-desc"];
       },
       link: "https://github.com/ArmCord/ArmCord/blob/dev/src/common/flags.ts",
       get children() {
-        return [_tmpl$15.cloneNode(true), _tmpl$16.cloneNode(true), _tmpl$17.cloneNode(true), _tmpl$18.cloneNode(true)];
+        return [(() => {
+          const _el$15 = _tmpl$15.cloneNode(true);
+          (0, import_web13.insert)(_el$15, () => store3.i18n["settings-prfmMode-performance"]);
+          return _el$15;
+        })(), (() => {
+          const _el$16 = _tmpl$16.cloneNode(true);
+          (0, import_web13.insert)(_el$16, () => store3.i18n["settings-prfmMode-battery"]);
+          return _el$16;
+        })(), (() => {
+          const _el$17 = _tmpl$17.cloneNode(true);
+          (0, import_web13.insert)(_el$17, () => store3.i18n["settings-prfmMode-vaapi"]);
+          return _el$17;
+        })(), (() => {
+          const _el$18 = _tmpl$18.cloneNode(true);
+          (0, import_web13.insert)(_el$18, () => store3.i18n["settings-none"]);
+          return _el$18;
+        })()];
       }
-    }), (0, import_web15.createComponent)(SwitchItem, {
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-MultiInstance-desc"];
       },
@@ -476,8 +468,10 @@
         return store3.settings.multiInstance;
       },
       onChange: (e) => set("multiInstance", e),
-      children: "Multi Instance"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-MultiInstance"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-mintoTray-desc"];
       },
@@ -485,8 +479,10 @@
         return store3.settings.minimizeToTray;
       },
       onChange: (e) => set("minimizeToTray", e),
-      children: "Work in background"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-mintoTray"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-tray-desc"];
       },
@@ -494,8 +490,10 @@
         return store3.settings.tray;
       },
       onChange: (e) => set("tray", e),
-      children: "Tray"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-tray"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-startMinimized-desc"];
       },
@@ -503,8 +501,10 @@
         return store3.settings.startMinimized;
       },
       onChange: (e) => set("startMinimized", e),
-      children: "Start minimized"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-startMinimized"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-smoothScroll-desc"];
       },
@@ -512,8 +512,10 @@
         return store3.settings.smoothScroll;
       },
       onChange: (e) => set("smoothScroll", e),
-      children: "Smooth scrolling"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-smoothScroll"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-autoScroll-desc"];
       },
@@ -521,8 +523,10 @@
         return store3.settings.autoScroll;
       },
       onChange: (e) => set("autoScroll", e),
-      children: "Allow auto-scroll"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+      get children() {
+        return store3.i18n["settings-autoScroll"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-spellcheck-desc"];
       },
@@ -530,16 +534,18 @@
         return store3.settings.spellcheck;
       },
       onChange: (e) => set("spellcheck", e),
-      children: "Spellcheck"
-    }), (0, import_web15.createComponent)(Header3, {
+      get children() {
+        return store3.i18n["settings-spellcheck"];
+      }
+    }), (0, import_web14.createComponent)(Header2, {
       get ["class"]() {
         return SettingsPage_default.category;
       },
       get tag() {
-        return HeaderTags3.H5;
+        return HeaderTags2.H5;
       },
       children: "Legacy features"
-    }), (0, import_web15.createComponent)(SwitchItem, {
+    }), (0, import_web14.createComponent)(SwitchItem, {
       get note() {
         return store3.i18n["settings-useLegacyCapturer-desc"];
       },
@@ -547,55 +553,97 @@
         return store3.settings.useLegacyCapturer;
       },
       onChange: (e) => set("useLegacyCapturer", e),
-      children: "Use legacy capturer"
+      get children() {
+        return store3.i18n["settings-useLegacyCapturer"];
+      }
+    }), (0, import_web14.createComponent)(SwitchItem, {
+      get note() {
+        return store3.i18n["settings-dynamicIcon-desc"];
+      },
+      get value() {
+        return store3.settings.dynamicIcon;
+      },
+      onChange: (e) => set("dynamicIcon", e),
+      get children() {
+        return store3.i18n["settings-dynamicIcon"];
+      }
+    }), (0, import_web14.createComponent)(Header2, {
+      get ["class"]() {
+        return SettingsPage_default.category;
+      },
+      get tag() {
+        return HeaderTags2.H5;
+      },
+      children: "Debug options"
+    }), (0, import_web14.createComponent)(Button, {
+      get size() {
+        return ButtonSizes.MAX;
+      },
+      get onClick() {
+        return window.armcord.openSettingsWindow;
+      },
+      children: "Open legacy settings"
+    }), _tmpl$19.cloneNode(true), (0, import_web14.createComponent)(Button, {
+      get size() {
+        return ButtonSizes.MAX;
+      },
+      get onClick() {
+        return window.armcord.settings.openStorageFolder;
+      },
+      children: "Open storage folder"
+    }), _tmpl$19.cloneNode(true), (0, import_web14.createComponent)(Button, {
+      get size() {
+        return ButtonSizes.MAX;
+      },
+      get onClick() {
+        return window.armcord.settings.copyDebugInfo;
+      },
+      children: "Copy debug info"
+    }), _tmpl$19.cloneNode(true), (0, import_web14.createComponent)(Button, {
+      get size() {
+        return ButtonSizes.MAX;
+      },
+      get onClick() {
+        return window.armcord.settings.copyGPUInfo;
+      },
+      children: "Copy GPU info"
     })];
   }
 
   // plugins/armcordSettings/pages/ThemesPage.jsx
-  var import_web16 = __toESM(require_web(), 1);
+  var import_web15 = __toESM(require_web(), 1);
   var {
-    plugin: {
-      store: store4
-    },
     ui: {
-      TextBox,
-      Header: Header4,
-      HeaderTags: HeaderTags4
+      Button: Button2,
+      Header: Header3,
+      HeaderTags: HeaderTags3,
+      ButtonSizes: ButtonSizes2,
+      Divider: Divider3
     }
   } = shelter;
   function ThemesPage() {
-    return (0, import_web16.createComponent)(Header4, {
+    return [(0, import_web15.createComponent)(Header3, {
       get tag() {
-        return HeaderTags4.H1;
+        return HeaderTags3.H1;
       },
       children: "Themes"
-    });
-  }
-
-  // plugins/armcordSettings/pages/UpdaterPage.jsx
-  var import_web17 = __toESM(require_web(), 1);
-  var {
-    plugin: {
-      store: store5
-    },
-    ui: {
-      TextBox: TextBox2,
-      Header: Header5,
-      HeaderTags: HeaderTags5
-    }
-  } = shelter;
-  function UpdaterPage() {
-    return (0, import_web17.createComponent)(Header5, {
-      get tag() {
-        return HeaderTags5.H1;
+    }), (0, import_web15.createComponent)(Divider3, {
+      mt: true,
+      mb: true
+    }), (0, import_web15.createComponent)(Button2, {
+      get size() {
+        return ButtonSizes2.MAX;
       },
-      children: "Updater"
-    });
+      get onClick() {
+        return window.armcord.openThemesWindow;
+      },
+      children: "Open Theme Manager"
+    })];
   }
 
   // plugins/armcordSettings/index.js
   var {
-    plugin: { store: store6 },
+    plugin: { store: store4 },
     settings: { registerSection },
     util: { log },
     ui: { openConfirmationModal },
@@ -604,10 +652,8 @@
   var settingsPages = [
     registerSection("divider"),
     registerSection("header", "ArmCord"),
-    registerSection("section", "armcord-legacy", "Legacy", LegacyPage),
     registerSection("section", "armcord-settings", "Settings", SettingsPage),
-    registerSection("section", "armcord-themes", "Themes", ThemesPage),
-    registerSection("section", "armcord-updater", "Updater", UpdaterPage)
+    registerSection("section", "armcord-themes", "Themes", ThemesPage)
   ];
   function restartRequired(payload) {
     if (payload.event === "settings_pane_viewed" && typeof payload.properties.origin_pane != "undefined") {
@@ -629,11 +675,11 @@
   }
   function onLoad() {
     refreshSettings();
-    store6.i18n = window.armcord.translations;
+    store4.i18n = window.armcord.translations;
     if (window.armcord.settings.config.mods == "vencord") {
-      store6.vencord = true;
+      store4.vencord = true;
     } else {
-      store6.vencord = false;
+      store4.vencord = false;
     }
     log("ArmCord Settings");
     settingsPages;
