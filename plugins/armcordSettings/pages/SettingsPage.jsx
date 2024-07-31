@@ -3,7 +3,7 @@ import classes from "./SettingsPage.css";
 import {set} from "../settings";
 const {
     plugin: {store},
-    ui: {SwitchItem, Header, Divider, HeaderTags}
+    ui: {SwitchItem, Header, Divider, HeaderTags, Button, ButtonSizes}
 } = shelter;
 
 export function SettingsPage() {
@@ -29,7 +29,7 @@ export function SettingsPage() {
                 value={store.settings.inviteWebsocket}
                 onChange={(e) => set("inviteWebsocket", e)}
             >
-                Rich Presence
+                {store.i18n["settings-invitewebsocket"]}
             </SwitchItem>
             <Header class={classes.category} tag={HeaderTags.H5}>
                 Look and feel
@@ -37,8 +37,8 @@ export function SettingsPage() {
             <DropdownItem
                 value={store.settings.windowStyle}
                 onChange={(e) => set("windowStyle", e.target.value)}
-                title="Window style"
-                note={store.i18n["settings-invitewebsocket-desc"]}
+                title={store.i18n["settings-theme"]}
+                note={store.i18n["settings-theme-desc"]}
                 link="https://github.com/ArmCord/ArmCord/wiki/Settings-%5Bwip%5D#armcord-theme"
             >
                 <option value="default">Default (Custom)</option>
@@ -48,7 +48,7 @@ export function SettingsPage() {
             <DropdownItem
                 value={store.settings.trayIcon}
                 onChange={(e) => set("trayIcon", e.target.value)}
-                title="Tray icon"
+                title={store.i18n["settings-trayIcon"]}
                 note={store.i18n["settings-trayIcon-desc"]}
             >
                     <option value="default">{store.i18n["settings-trayIcon-dynamic"]}</option>
@@ -65,21 +65,14 @@ export function SettingsPage() {
                 value={store.settings.skipSplash}
                 onChange={(e) => set("skipSplash", e)}
             >
-                Skip splash screen
-            </SwitchItem>
-            <SwitchItem
-                note={store.i18n["settings-dynamicIcon-desc"]}
-                value={store.settings.dynamicIcon}
-                onChange={(e) => set("dynamicIcon", e)}
-            >
-                Dynamic icon
+                {store.i18n["settings-skipSplash"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-mobileMode-desc"]}
                 value={store.settings.mobileMode}
                 onChange={(e) => set("mobileMode", e)}
             >
-                Mobile Mode
+                {store.i18n["settings-mobileMode"]}
             </SwitchItem>
             <Header class={classes.category} tag={HeaderTags.H5}>
                 Behaviour
@@ -87,7 +80,7 @@ export function SettingsPage() {
             <DropdownItem
                 value={store.settings.channel}
                 onChange={(e) => set("channel", e.target.value)}
-                title="Discord channel"
+                title={store.i18n["settings-channel"]}
                 note={store.i18n["settings-channel-desc"]}
                 link="https://support.discord.com/hc/en-us/articles/360035675191-Discord-Testing-Clients"
             >
@@ -98,63 +91,63 @@ export function SettingsPage() {
             <DropdownItem
                 value={store.settings.performanceMode}
                 onChange={(e) => set("performanceMode", e.target.value)}
-                title="Performance mode"
+                title={store.i18n["settings-prfmMode"]}
                 note={store.i18n["settings-prfmMode-desc"]}
                 link="https://github.com/ArmCord/ArmCord/blob/dev/src/common/flags.ts"
             >
-                <option value="performance">Performance</option>
-                <option value="battery">Battery</option>
-                <option value="vaapi">VAAPI</option>
-                <option value="none">None</option>
+                <option value="performance">{store.i18n["settings-prfmMode-performance"]}</option>
+                <option value="battery">{store.i18n["settings-prfmMode-battery"]}</option>
+                <option value="vaapi">{store.i18n["settings-prfmMode-vaapi"]}</option>
+                <option value="none">{store.i18n["settings-none"]}</option>
             </DropdownItem>
             <SwitchItem
                 note={store.i18n["settings-MultiInstance-desc"]}
                 value={store.settings.multiInstance}
                 onChange={(e) => set("multiInstance", e)}
             >
-                Multi Instance
+                {store.i18n["settings-MultiInstance"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-mintoTray-desc"]}
                 value={store.settings.minimizeToTray}
                 onChange={(e) => set("minimizeToTray", e)}
             >
-                Work in background
+                {store.i18n["settings-mintoTray"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-tray-desc"]}
                 value={store.settings.tray}
                 onChange={(e) => set("tray", e)}
             >
-                Tray
+                {store.i18n["settings-tray"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-startMinimized-desc"]}
                 value={store.settings.startMinimized}
                 onChange={(e) => set("startMinimized", e)}
             >
-                Start minimized
+                {store.i18n["settings-startMinimized"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-smoothScroll-desc"]}
                 value={store.settings.smoothScroll}
                 onChange={(e) => set("smoothScroll", e)}
             >
-                Smooth scrolling
+                {store.i18n["settings-smoothScroll"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-autoScroll-desc"]}
                 value={store.settings.autoScroll}
                 onChange={(e) => set("autoScroll", e)}
             >
-                Allow auto-scroll
+                {store.i18n["settings-autoScroll"]}
             </SwitchItem>
             <SwitchItem
                 note={store.i18n["settings-spellcheck-desc"]}
                 value={store.settings.spellcheck}
                 onChange={(e) => set("spellcheck", e)}
             >
-                Spellcheck
+                {store.i18n["settings-spellcheck"]}
             </SwitchItem>
             <Header class={classes.category} tag={HeaderTags.H5}>
                 Legacy features
@@ -164,8 +157,25 @@ export function SettingsPage() {
                 value={store.settings.useLegacyCapturer}
                 onChange={(e) => set("useLegacyCapturer", e)}
             >
-                Use legacy capturer
+                {store.i18n["settings-useLegacyCapturer"]}
             </SwitchItem>
+            <SwitchItem
+                note={store.i18n["settings-dynamicIcon-desc"]}
+                value={store.settings.dynamicIcon}
+                onChange={(e) => set("dynamicIcon", e)}
+            >
+                {store.i18n["settings-dynamicIcon"]}
+            </SwitchItem>
+            <Header class={classes.category} tag={HeaderTags.H5}>
+                Debug options
+            </Header>
+            <Button size={ButtonSizes.MAX} onClick={window.armcord.openSettingsWindow}>Open legacy settings</Button>
+            <br/>
+            <Button size={ButtonSizes.MAX} onClick={window.armcord.settings.openStorageFolder}>Open storage folder</Button>
+            <br/>
+            <Button size={ButtonSizes.MAX} onClick={window.armcord.settings.copyDebugInfo}>Copy debug info</Button>
+            <br/>
+            <Button size={ButtonSizes.MAX} onClick={window.armcord.settings.copyGPUInfo}>Copy GPU info</Button>
         </>
     );
 }
