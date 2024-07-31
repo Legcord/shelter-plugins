@@ -575,6 +575,13 @@
         return HeaderTags2.H5;
       },
       children: "Debug options"
+    }), (0, import_web14.createComponent)(SwitchItem, {
+      note: "Disables the Shelter mod. Note features like RPC and screenshare quality fix will be disabled.",
+      get value() {
+        return store3.settings.disableShelter;
+      },
+      onChange: (e) => set("disableShelter", e),
+      children: "Disable Shelter"
     }), (0, import_web14.createComponent)(Button, {
       get size() {
         return ButtonSizes.MAX;
